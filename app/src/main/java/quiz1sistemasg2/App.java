@@ -4,11 +4,122 @@
 package quiz1sistemasg2;
 
 public class App {
+
+     /*  Implemente una funcion llamada calcularValorHora que cumpla con las siguientes caracteristicas
+        * Recibe: 
+            - Una cadena de caracteres que representa el tipo de vehiculo (C, M o B)
+            - Un entero que representa la cantidad de horas de permanencia
+        * Retorna:
+            - Un entero representando el valor total del tiquete
+        * Controlar errores retornando -1
+    */
+    //------------------------------------------------------------------
+    
+    public static int calcularValorHora(String tipoDeVehiculo, int horasDePermanencia){
+        try {
+            
+            double valorHoraDeCarro = 5000;
+            double valorHoraDeMoto = 3000;
+            double valorHoraDeBicicleta = 1000;
+            double valorTotalHoras = 0;
+            double valorTotalConHorasExtra = 0;
+            double horasExtra =0;
+
+            if(horasDePermanencia <= 0){
+                return -1;
+            }
+            
+            switch(tipoDeVehiculo){
+
+                case "C":
+
+                    valorTotalHoras = valorHoraDeCarro * horasDePermanencia;
+                    break;
+
+                case "M":
+
+                    valorTotalHoras = valorHoraDeMoto * horasDePermanencia;
+                    break;
+
+                case "B":
+
+                    valorTotalHoras = valorHoraDeBicicleta * horasDePermanencia;
+                    break;
+
+                
+
+                default: 
+
+            }
+
+            if(horasDePermanencia > 3){
+
+                horasExtra = horasDePermanencia -3;
+                valorTotalConHorasExtra = valorTotalHoras + (horasExtra * 2000);
+
+                return (int)valorTotalConHorasExtra;
+
+            }
+            else {
+                return (int)valorTotalHoras;
+
+            }
+
+        } catch (Exception e) {
+            return -1;
+        }
+
+    }
+
+  /*  Implemente una funcion llamada calcularDescuento que cumpla con las siguientes caracteristicas
+        * Recibe:
+            - Un entero representando el valor total de las horas
+            - Un entero representando la si es estudiante o no
+            - Un entero represenatando la cantidad de horas
+        * Retorna:
+            - Un entero representando el valor del descuento
+        * Controlar errores retornando -1
+    */
+    //------------------------------------------------------------------
+    public static int calcularDescuento(int valorTotalDeLasHoras, int estudiante, int cantidadDeHoras){
+
+        try {
+            double valorConDescuento = 0;
+            double valorTotalEstudiante = 0;
+            if(cantidadDeHoras > 4){
+                valorConDescuento = valorTotalDeLasHoras -(valorTotalDeLasHoras * 0.3);
+                
+                return (int)valorConDescuento;
+            }
+            else if(estudiante == 1){
+                valorTotalEstudiante = valorConDescuento - (valorTotalDeLasHoras * 0.05);
+
+                return(int)valorTotalEstudiante;
+                
+            }
+            else{
+                return(int) valorTotalDeLasHoras;
+            }
+            
+
+
+
+
+
+        } catch (Exception e) {
+           return -1;
+        }
+
+    }
+
+
+    
+    
     
 
     public static void main(String[] args) {
         
-       
+       System.out.println(calcularDescuento(10000, 1, 2));
 
     }
 
@@ -17,7 +128,7 @@ public class App {
             - Una cadena de caracteres que representa el tipo de vehiculo (C, M o B)
             - Un entero que representa la cantidad de horas de permanencia
         * Retorna:
-            - Un entero representando el valor total de las boletas
+            - Un entero representando el valor total del tiquete
         * Controlar errores retornando -1
     */
     //------------------------------------------------------------------
